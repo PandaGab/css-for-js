@@ -24,13 +24,17 @@ const SIZES = {
 }
 
 const ProgressBar = ({ value, size }) => {
+
+  const styles = SIZES[size];
+
   return (
     <Wrapper 
       role="progressbar"
       aria-valuenow={value}
       aria-valuemin="0"
       aria-valuemax="100"
-      size={size}>
+      size={size}
+    >
       <BarClipper>
         <Bar value={value}></Bar>
         <VisuallyHidden>{value}%</VisuallyHidden>

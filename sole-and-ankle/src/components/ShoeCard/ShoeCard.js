@@ -58,7 +58,9 @@ const ShoeCard = ({
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
-          {(variant === 'on-sale') ? <SalePrice children={formatPrice(salePrice)}/> : null}
+          {variant === 'on-sale' ? (
+          <SalePrice children={formatPrice(salePrice)}/> 
+          ) : undefined}
         </Row>
       </Link>
       {(variant != 'default') ? <Banner style={STYLES[variant]}>{STYLES[variant].text}</Banner> : null}

@@ -12,6 +12,7 @@ import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
+import { QUERIES } from '../../constants';
 
 const MainStoryGrid = () => {
   return (
@@ -66,10 +67,20 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+  > :not(:last-child) {
+    border-bottom: 1px solid var(--color-gray-300);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
 `;
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+  & ${StoryList} {
+    @media ${QUERIES.tabletOnly} {
+      flex-direction: row;
+    }
+  }
 `;
 
 const AdvertisementSection = styled.section`

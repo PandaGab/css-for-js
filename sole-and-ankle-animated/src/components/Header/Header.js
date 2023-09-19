@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <RestingLink>Sale</RestingLink>
+            <SelectedLink>Sale</SelectedLink>
+          </NavLink>
+          <NavLink href="/new">
+            <RestingLink>New&nbsp;Releases</RestingLink>
+            <SelectedLink>New&nbsp;Releases</SelectedLink>
+          </NavLink>
+          <NavLink href="/men">
+            <RestingLink>Men</RestingLink>
+            <SelectedLink>Men</SelectedLink>
+          </NavLink>
+          <NavLink href="/women">
+            <RestingLink>Women</RestingLink>
+            <SelectedLink>Women</SelectedLink>
+          </NavLink>
+          <NavLink href="/kids">
+            <RestingLink>Kids</RestingLink>
+            <SelectedLink>Kids</SelectedLink>
+          </NavLink>
+          <NavLink href="/collections">
+            <RestingLink>Collections</RestingLink>
+            <SelectedLink>Collections</SelectedLink>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -115,14 +133,38 @@ const Filler = styled.div`
 `;
 
 const NavLink = styled.a`
+  --scrolling-speed: 300ms;
+  position: relative;
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+`;
+
+const RestingLink = styled.p`
+  transition: transform var(--scrolling-speed) 100ms;
+  ${NavLink}:hover &,
+  ${NavLink}:focus & {
+    transform: translateY(-100%);
+    transition: transform var(--scrolling-speed);
+  }
+`;
+
+const SelectedLink = styled.p`
+  position: absolute;
+  font-weight: bold;
+  transform: translateY(0%);
+  transition: transform var(--scrolling-speed) 100ms;
+  ${NavLink}:hover &,
+  ${NavLink}:focus & {
+    transform: translateY(-100%);
+    transition: transform var(--scrolling-speed);
   }
 `;
 
